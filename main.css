@@ -1,0 +1,153 @@
+/* --- Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Lato", sans-serif;
+  position: relative;
+}
+/* --- Reset --- */
+/* --- Heading --- */
+.heading {
+  background-color: #db4c3f;
+  text-align: center;
+  padding: 1rem;
+  color: black;
+  font-weight: thin;
+}
+.cartIcon {
+  text-decoration: none;
+  color: #ffffff;
+}
+/* --- Heading --- */
+.groceryList {
+  padding: 2rem;
+}
+.today {
+  font-weight: 999;
+}
+.todayDate {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+/* --- Add Task --- */
+.addTask {
+  padding: 1rem;
+}
+.plus {
+  font-weight: 100;
+  font-style: italic;
+  font-size: 1rem;
+  padding: 0.1rem 0rem 0rem 0.2rem;
+  border-radius: 10rem;
+  color: #db4c3f;
+}
+.addTask:hover {
+  cursor: pointer;
+}
+.addTask:hover > .plus {
+  background-color: #db4c3f;
+  color: white;
+}
+.addTask:hover > .plusText {
+  color: #db4c3f;
+  opacity: 1;
+}
+.plusText {
+  margin-left: 0.45rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+/* --- Add Task --- */
+/* --- Input Task --- */
+.input-container {
+  padding: 1rem;
+}
+.input {
+  width: 100%;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  border: 1px solid #cccccc;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.inputTask {
+  margin-right: 0.5rem;
+  background-color: #db4c3f;
+  opacity: 0.2;
+}
+.inputTask,
+.cancelTask {
+  background-color: #db4c3f;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+.cancelTask {
+  background-color: #ffffff;
+  color: black;
+  text-decoration: none;
+  border: 1px solid #db4c3f;
+}
+.cancelTask:hover {
+  background-color: #db4c3f;
+  color: black;
+}
+
+/* --- Input Task --- */
+/* --- Task List --- */
+.singleItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1.5rem;
+}
+.text {
+  float: left;
+  font-size: 1.5rem;
+}
+.allIcons {
+  float: right;
+}
+.icon {
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-left: 2rem;
+}
+.checkIcon {
+  color: #63b995;
+}
+.editIcon {
+  color: #23b5d3;
+}
+.removeIcon {
+  color: #db4c3f;
+}
+/* --- Task List --- */
+/* --- Operations --- */
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.enabled {
+  opacity: 1;
+}
+.enabled:hover {
+  cursor: pointer;
+  transform: translateY(-0.2rem);
+}
+.enabled:active {
+  transform: translateY(0rem);
+}
+/* --- Operations --- */

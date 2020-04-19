@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/e2ef9baa8a.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="groceryList-container">
+      <h1 class="heading">
+        Grocery List App
+        <a href="" class="cartIcon"><i class="fas fa-shopping-cart"></i></a>
+      </h1>
+      <div class="groceryList">
+        <h1 class="today">Today <span class="todayDate"></span></h1>
+        <div class="addTask show">
+          <span class="plus"><i class="fas fa-plus"></i> </span
+          ><span class="plusText">Add task</span>
+        </div>
+        <div class="input-container hide">
+          <form class="form">
+            <input
+              type="text"
+              class="input"
+              placeholder="e.g. Learn some PHP"
+            />
+            <input type="submit" disabled value="Add Task" class="inputTask" />
+            <a href="#" class="cancelTask">CANCEL</a>
+          </form>
+        </div>
+        <!--Task List-->
+        <div class="taskList">
+          <!--single item-->
+          <!--
+          <div class="singleItem">
+            <div class="singleItem-text">
+              <span class="text" data-id="0">Grocery</span>
+            </div>
+            <div class="singleItem-icons">
+              <div class="allIcons">
+                <a href="#" class="checkIcon icon" data-id="0"
+                  ><i class="far fa-check-circle"></i>
+                </a>
+                <a href="#" class="editIcon icon" data-id="0"
+                  ><i class="far fa-edit"></i>
+                </a>
+                <a href="#" class="removeIcon icon" data-id="0"
+                  ><i class="far fa-times-circle"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+         -->
+          <!--single item-->
+        </div>
+        <!--Task List-->
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
