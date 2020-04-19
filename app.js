@@ -46,13 +46,37 @@
       submit.disabled = true;
       submit.classList.remove("enabled");
     }
-    addToList(value){
-     console.log(value);
-     let object = {
-      name: value,
-      id:0,
-     }
-     
+    addToList(value) {
+      let objectId = id;
+      let object = {
+        name: value,
+        id: objectId,
+      };
+      id++;
+      this.addToDOM(object);
+    }
+    addToDOM(object) {
+      let div = document.createElement("div");
+      div.classList.add("singleItem");
+      div.innerHTML = `
+                 <div class="singleItem-text">
+              <span class="text" data-id="${object.id}">${object.name}</span>
+            </div>
+            <div class="singleItem-icons">
+              <div class="allIcons">
+                <a href="#" class="checkIcon icon" data-id="${object.id}"
+                  ><i class="far fa-check-circle"></i>
+                </a>
+                <a href="#" class="editIcon icon" data-id="${object.id}"
+                  ><i class="far fa-edit"></i>
+                </a>
+                <a href="#" class="removeIcon icon" data-id="${object.id}"
+                  ><i class="far fa-times-circle"></i>
+                </a>
+              </div>
+            </div>
+     `;
+     taskList.appendChild(div);
     }
   }
   //varijable
@@ -63,6 +87,8 @@
   let submit = document.querySelector(".inputTask");
   let cancelBtn = document.querySelector(".cancelTask");
   let inputContainer = document.querySelector(".input-container");
+  let taskList = document.querySelector('.taskList');
+  let id = 0;
   //eventi
   let ui = new UI();
   document.addEventListener("DOMContentLoaded", (event) => {
@@ -74,12 +100,18 @@
   });
   cancelBtn.addEventListener("click", (event) => {
     ui.closeInput();
+    ui.hideBtn();
   });
-  form.addEventListener("keypress", (event) => {
+  form.addEventListener("keyup", (event) => {
     let value = input.value;
-    if (value.length > 1) {
+    if (value.length > 0) {
       ui.showBtn();
     }
+    else{
+     ui.hideBtn();
+    }
+    console.log(value.length);
+    
   });
   submit.addEventListener("click", (event) => {
     let value = input.value;
