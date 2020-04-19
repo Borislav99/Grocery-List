@@ -76,7 +76,11 @@
               </div>
             </div>
      `;
-     taskList.appendChild(div);
+      taskList.appendChild(div);
+    }
+    checkIcon(icon, text){
+     text.classList.toggle('strike');
+     icon.classList.toggle('low');
     }
   }
   //varijable
@@ -87,7 +91,7 @@
   let submit = document.querySelector(".inputTask");
   let cancelBtn = document.querySelector(".cancelTask");
   let inputContainer = document.querySelector(".input-container");
-  let taskList = document.querySelector('.taskList');
+  let taskList = document.querySelector(".taskList");
   let id = 0;
   //eventi
   let ui = new UI();
@@ -106,18 +110,27 @@
     let value = input.value;
     if (value.length > 0) {
       ui.showBtn();
+    } else {
+      ui.hideBtn();
     }
-    else{
-     ui.hideBtn();
-    }
-    console.log(value.length);
-    
   });
   submit.addEventListener("click", (event) => {
     let value = input.value;
     ui.hideBtn();
     ui.closeInput();
     ui.addToList(value);
+  });
+  taskList.addEventListener("click", (event) => {
+    event.preventDefault();
+    let value = event.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0];
+    let textValue = value.textContent;
+    if (event.target.parentElement.classList.contains("checkIcon")) {
+     ui.checkIcon(event.target, value)
+    } else if (event.target.parentElement.classList.contains("editIcon")) {
+      console.log(`edit`);
+    } else if (event.target.parentElement.classList.contains("removeIcon")) {
+      console.log(`remove`);
+    }
   });
 })();
 

@@ -150,4 +150,10 @@ body {
 .enabled:active {
   transform: translateY(0rem);
 }
+.strike{
+ text-decoration: line-through;
+}
+.low{
+ opacity: 0.2;
+}
 /* --- Operations --- */
