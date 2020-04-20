@@ -157,6 +157,7 @@ body {
  opacity: 0.2;
 }
 /* --- Operations --- */
+/* --- Media Q --- */
 @media screen and (min-width:400px){
   html{
     font-size: 67.5%;
@@ -177,3 +178,4 @@ body {
     font-size: 82.5%;
   }
 }
+/* --- Media Q --- */
