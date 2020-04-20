@@ -157,3 +157,23 @@ body {
  opacity: 0.2;
 }
 /* --- Operations --- */
+@media screen and (min-width:400px){
+  html{
+    font-size: 67.5%;
+  }
+}
+@media screen and (min-width:500px){
+  html{
+    font-size: 72.5%;
+  }
+}
+@media screen and (min-width:600px){
+  html{
+    font-size: 77.5%;
+  }
+}
+@media screen and (min-width:700px){
+  html{
+    font-size: 82.5%;
+  }
+}
