@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grocery List</title>
-    <link rel="stylesheet" href="main.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/e2ef9baa8a.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <!--Grocery Container-->
-    <div class="groceryList-container">
-      <!--Grocery Heading-->
-      <h1 class="heading">
-        Grocery List App
-        <a href="" class="cartIcon"><i class="fas fa-shopping-cart"></i></a>
-      </h1>
-      <!--Grocery Heading-->
-      <!--Grocery List-->
-      <div class="groceryList">
-        <h1 class="today">Today <span class="todayDate"></span></h1>
-        <!--Add Task-->
-        <div class="addTask show">
-          <span class="plus"><i class="fas fa-plus"></i> </span
-          ><span class="plusText">Add grocery</span>
-        </div>
-        <!--Add Task-->
-        <!--Input Container-->
-        <div class="input-container hide">
-          <form class="form">
-            <input type="text" class="input" placeholder="...add Grocery" />
-            <input
-              type="submit"
-              disabled
-              value="Add Grocery"
-              class="inputTask"
-            />
-            <a href="#" class="cancelTask">CANCEL</a>
-          </form>
-        </div>
-        <!--Input Container-->
-        <!--Task List-->
-        <div class="taskList">
-          <!--single item-->
-          <!--
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grocery List</title>
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/e2ef9baa8a.js" crossorigin="anonymous"></script>
+</head>
+<body">
+  <!--Grocery Container-->
+  <div class="groceryList-container">
+    <!--Grocery Heading-->
+    <h1 class="heading">
+      Grocery List App
+      <a href="" class="cartIcon"><i class="fas fa-shopping-cart"></i></a>
+    </h1>
+    <!--Grocery Heading-->
+    <!--Grocery List-->
+    <div class="groceryList">
+      <h1 class="today">Today <span class="todayDate"></span></h1>
+      <!--Add Task-->
+      <div class="addTask show">
+        <span class="plus"><i class="fas fa-plus"></i> </span><span class="plusText">Add grocery</span>
+      </div>
+      <!--Add Task-->
+      <!--Input Container-->
+      <div class="input-container hide">
+        <form class="form">
+          <input type="text" class="input" placeholder="...add Grocery" />
+          <input type="submit" disabled value="Add Grocery" class="inputTask" />
+          <a href="#" class="cancelTask">CANCEL</a>
+        </form>
+      </div>
+      <!--Input Container-->
+      <!--Task List-->
+      <div class="taskList">
+        <!--single item-->
+        <!--
           <div class="singleItem">
             <div class="singleItem-text">
               <span class="text" data-id="0">Grocery</span>
@@ -69,14 +58,15 @@
             </div>
           </div>
          -->
-          <!--single item-->
-        </div>
-        <!--Task List-->
+        <!--single item-->
       </div>
-      <!--Grocery List-->
+      <!--Task List-->
     </div>
-    <!--Grocery Container-->
+    <!--Grocery List-->
+  </div>
+  <!--Grocery Container-->
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
   </body>
+
 </html>

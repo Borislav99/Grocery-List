@@ -27,30 +27,30 @@
       let output = `${day} ${number} ${month}`;
       todayDate.innerText = output;
     }
-    //open input
-    openInput() {
-      inputContainer.classList.toggle("hide");
-    }
-    //close input
-    closeInput() {
-      inputContainer.classList.add("hide");
-      addTask.classList.remove("hide");
-      input.value = "";
+    //open and close input
+    openCloseInput(value) {
+      if (value === 'true') {
+        inputContainer.classList.toggle("hide");
+      } else if (value === 'false') {
+        inputContainer.classList.add("hide");
+        addTask.classList.remove("hide");
+        input.value = "";
+      }
     }
     //hide task
     hideTask() {
       addTask.classList.remove("show");
       addTask.classList.add("hide");
     }
-    //show btn
-    showBtn() {
-      submit.disabled = false;
-      submit.classList.add("enabled");
-    }
-    //hide btn
-    hideBtn() {
-      submit.disabled = true;
-      submit.classList.remove("enabled");
+    //open and show btn
+    showHideBtn(value) {
+      if (value === 'true') {
+        submit.disabled = false;
+        submit.classList.add("enabled");
+      } else if (value === 'false') {
+        submit.disabled = true;
+        submit.classList.remove("enabled");
+      }
     }
     //add to list
     addToList(value) {
@@ -68,9 +68,9 @@
       else {
         objectId = id;
       };
-      if(objectId===-Infinity){
+      if (objectId === -Infinity) {
         objectId = 0;
-      } 
+      }
       let object = {
         name: value,
         id: objectId,
@@ -125,15 +125,16 @@
     //edit icon
     editIcon(text) {
       this.hideTask();
-      this.openInput();
+      this.openCloseInput('true');
       input.value = text;
       submit.value = "Edit Grocery";
       submit.removeEventListener("click", this.submitEvent);
       submit.addEventListener("click", this.editEvent);
-      this.showBtn();
+      this.showHideBtn('true');
     }
     //edit event
-    editEvent() {
+    editEvent(event) {
+      event.preventDefault();
       let id;
       let ui = new UI();
       let arr = [];
@@ -155,7 +156,8 @@
       ui.addToDOM(object);
       Storage.StorageAdd(object);
       addTask.classList.add("show");
-      ui.closeInput();
+      ui.openCloseInput('false');
+      ui.blockOther('false');
       submit.removeEventListener("click", ui.editEvent);
       submit.addEventListener("click", ui.submitEvent);
       submit.value = "Add Grocery";
@@ -165,10 +167,10 @@
       objectsList.push(object);
     }
     //submit event
-    submitEvent(event) {
+    submitEvent() {
       let value = input.value;
-      ui.hideBtn();
-      ui.closeInput();
+      ui.showHideBtn('false');
+      ui.openCloseInput('false');
       ui.addToList(value);
     }
     //on load
@@ -182,6 +184,21 @@
           };
           this.addToDOM(object);
         });
+      }
+    }
+    blockOther(value) {
+      let edits = document.querySelectorAll('.ed');
+      if (value === 'true') {
+        edits.forEach(item => {
+          item.classList.add('disableOthers');
+          item.parentElement.classList.add('disableOthers', 'low');
+        })
+      }
+      else if (value === 'false') {
+        edits.forEach(item => {
+          item.classList.remove('disableOthers');
+          item.parentElement.classList.remove('disableOthers', 'low');
+        })
       }
     }
   }
@@ -200,12 +217,12 @@
     }
   }
   /* ----- Varijable ----- */
-  let todayDate = document.querySelector(".todayDate");
-  let addTask = document.querySelector(".addTask");
   let form = document.querySelector(".form");
   let input = document.querySelector(".input");
-  let submit = document.querySelector(".inputTask");
+  let addTask = document.querySelector(".addTask");
   let cancelBtn = document.querySelector(".cancelTask");
+  let submit = document.querySelector(".inputTask");
+  let todayDate = document.querySelector(".todayDate");
   let inputContainer = document.querySelector(".input-container");
   let taskList = document.querySelector(".taskList");
   let id = 0;
@@ -213,27 +230,27 @@
   /* ----- Eventi ----- */
   let ui = new UI();
   //on Load
-  document.addEventListener("DOMContentLoaded", (event) => {
+  document.addEventListener("DOMContentLoaded", () => {
     ui.setDate();
     ui.onLoad();
   });
   //add Task
-  addTask.addEventListener("click", (event) => {
-    ui.openInput();
+  addTask.addEventListener("click", () => {
+    ui.openCloseInput('true');
     ui.hideTask();
   });
   //cancel Btn
-  cancelBtn.addEventListener("click", (event) => {
-    ui.closeInput();
-    ui.hideBtn();
+  cancelBtn.addEventListener("click", () => {
+    ui.openCloseInput('false');
+    ui.showHideBtn('false');
   });
   //form
-  form.addEventListener("keyup", (event) => {
+  form.addEventListener("keyup", () => {
     let value = input.value;
     if (value.length > 0) {
-      ui.showBtn();
+      ui.showHideBtn('true');
     } else {
-      ui.hideBtn();
+      ui.showHideBtn('false');
     }
   });
   //submit
@@ -248,17 +265,18 @@
     let id = parseInt(event.target.parentElement.dataset.id);
     let singleItem =
       event.target.parentElement.parentElement.parentElement.parentElement;
-      //check icon
+    //check icon
     if (event.target.parentElement.classList.contains("checkIcon")) {
       ui.checkIcon(event.target, value);
-    } 
+    }
     //edit
-    else if (event.target.parentElement.classList.contains("editIcon")||event.target.classList.contains('ed')) {
+    else if (event.target.parentElement.classList.contains("editIcon")) {
       ui.removeIcon(singleItem, id);
       ui.editIcon(textValue, id);
+      ui.blockOther('true');
     }
     //remove 
-    else if (event.target.parentElement.classList.contains("removeIcon") || event.target.classList.contains('rem')) {
+    else if (event.target.parentElement.classList.contains("removeIcon")) {
       ui.removeIcon(singleItem, id);
     }
   });
